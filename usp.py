@@ -11,7 +11,7 @@ def generate_heatmaps(file_path):
     x = data['x']
     y = data['y']
     min_values = data['min']
-    grid_x, grid_y = np.mgrid[x.min():x.max():100j, y.min():y.max():100j]  # 100j = 100 points in each direction
+    grid_x, grid_y = np.mgrid[0:x.max():100j, 0:y.max():100j]
     grid_min_values = griddata((x, y), min_values, (grid_x, grid_y), method='cubic')
 
     # average time spent in min
@@ -22,7 +22,7 @@ def generate_heatmaps(file_path):
     plt.xlabel('X Coordinates')
     plt.ylabel('Y Coordinates')
     plt.tight_layout()
-    plt.savefig('spatial_gradient_average_time.png')
+    plt.savefig('2spatial_gradient_average_time.png')
     plt.show()
 
     # density 
@@ -40,7 +40,7 @@ def generate_heatmaps(file_path):
     plt.xlabel('X Coordinates')
     plt.ylabel('Y Coordinates')
     plt.tight_layout()
-    plt.savefig('spatial_gradient_density.png')
+    plt.savefig('2spatial_gradient_density.png')
     plt.show()
 
 if __name__ == "__main__":
